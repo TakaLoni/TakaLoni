@@ -1,0 +1,124 @@
+/* الأنماط العامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #111111;
+    color: #f0f0f0;
+    padding: 30px;
+}
+
+/* -------------------- زر العودة -------------------- */
+.back-link {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    text-align: left;
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #e50914; 
+}
+
+/* -------------------- هيكل الصفحة -------------------- */
+
+.bio-container {
+    display: flex; /* لتقسيم الصفحة إلى عمودين */
+    flex-wrap: wrap; /* لتجاوب العناصر في الشاشات الصغيرة */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* قسم النص */
+.bio-content {
+    flex: 1;
+    min-width: 300px;
+    line-height: 1.8;
+}
+
+.bio-content h1 {
+    color: #257c34;
+    margin-bottom: 25px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+}
+
+.bio-content p {
+    margin-bottom: 20px;
+}
+
+.bio-content h2 {
+    color: #cccccc;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+}
+
+.bio-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.bio-content li {
+    margin-bottom: 10px;
+    color: #aaaaaa;
+}
+
+/* -------------------- معرض الصور 3D -------------------- */
+
+.image-gallery {
+    /* يضمن أن الصور تأخذ مساحة كافية في الشاشات الكبيرة */
+    flex: 1; 
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* لإظهار تأثير 3D بشكل صحيح، يجب تحديد منظور */
+    perspective: 1000px; 
+}
+
+.image-wrapper {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    /* تحديد أن العناصر الأبناء يمكن أن تكون ثلاثية الأبعاد */
+    transform-style: preserve-3d; 
+    transition: transform 0.5s ease;
+}
+
+.bio-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* الخاصية المفتاحية للحركة الـ 3D: يتم تطبيقها عند التفاعل */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* التأثير 3D عند مرور الفأرة */
+.image-wrapper:hover {
+    /* حركة خفيفة ثلاثية الأبعاد (تدوير حول محور Y) */
+    transform: rotateY(5deg) scale(1.03); 
+    box-shadow: 0 10px 30px rgba(229, 9, 20, 0.5); /* ظل أحمر عند التفاعل */
+}
+
+/* لضمان التجاوب في الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .bio-container {
+        flex-direction: column;
+    }
+}

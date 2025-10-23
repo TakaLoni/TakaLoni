@@ -1,0 +1,90 @@
+/* الأنماط العامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #111111;
+    color: #ffffff;
+    padding: 30px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 50px;
+    color: rgb(97, 40, 99) ; 
+    letter-spacing: 3px;
+    font-size: 2em;
+}
+
+/* -------------------- زر العودة -------------------- */
+.back-link {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    text-align: left;
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+/* -------------------- شبكة الفيديوهات (GRID) -------------------- */
+
+.videos-grid {
+    display: grid;
+    /* عمودان متساويان في الشاشات الكبيرة */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+    gap: 40px; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.video-item {
+    text-align: left;
+}
+
+.video-item h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #b511bb;
+}
+
+/* -------------------- التجاوب والحفاظ على نسبة الفيديو (KEY) -------------------- */
+
+.video-wrapper {
+    /* يجعل العنصر الأب جاهزاً لاستقبال العنصر المطلق (iframe) */
+    position: relative; 
+    
+    /* هذا يحدد ارتفاع العنصر بنسبة 56.25% من عرضه (16:9 aspect ratio) */
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-wrapper iframe {
+    /* يجعل الإطار يملأ الـ wrapper بالكامل ويغطي المنطقة المحددة بالـ padding */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* التجاوب (Responsive) */
+@media (max-width: 960px) {
+    .videos-grid {
+        /* عمود واحد في الشاشات الأصغر */
+        grid-template-columns: 1fr;
+    }
+}
